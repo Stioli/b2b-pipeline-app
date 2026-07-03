@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>B2B-Ankauf &middot; Autohaus Stieber</title>
+<title>Fahrzeugsuche B2B &middot; Autohaus Stieber</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -36,6 +36,12 @@ h1,h2,h3{font-family:var(--font-heading);font-weight:600;letter-spacing:-0.01em}
 .btn-ghost{background:#fff;color:var(--accent);border:1px solid var(--border)}
 .btn-ghost:hover{border-color:var(--accent)}
 .btn-danger{background:#fff;color:#C0392B;border:1px solid var(--border)}
+.btn-go{background:#25D366;color:#fff}
+.btn-go:hover{background:#1EA552}
+.btn-go:disabled{background:#8E9FB4;cursor:default}
+.scan-banner{font-family:var(--font-heading);font-size:1.3rem;font-weight:700;text-align:center;margin:12px auto 0;padding:12px 20px;border-radius:14px;max-width:640px}
+.scan-banner.rot{color:#E74C3C;background:rgba(231,76,60,0.10)}
+.scan-banner.gruen{color:#1EA552;background:rgba(37,211,102,0.12)}
 .btn-block{display:block;width:100%}
 .btn-sub{text-align:center;color:var(--light);font-size:13px;margin-top:8px}
 .field{margin-bottom:14px}
@@ -46,11 +52,11 @@ h1,h2,h3{font-family:var(--font-heading);font-weight:600;letter-spacing:-0.01em}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
 @media(max-width:640px){.grid3{grid-template-columns:1fr 1fr}}
 .checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
-.check{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:11px 12px;cursor:pointer;min-height:48px}
-.check input{width:20px;height:20px;accent-color:var(--accent);flex:none}
-.check span{font-size:15px}
-.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:22px;flex-wrap:wrap}
-.tab{font-family:var(--font-heading);font-weight:600;font-size:15px;color:var(--sub);background:#fff;border:1px solid var(--border);border-radius:14px;padding:11px 20px;cursor:pointer;min-height:48px}
+.check, .field label.check{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:11px 12px;cursor:pointer;min-height:48px;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink);margin-bottom:0}
+.check input{width:20px;height:20px;accent-color:var(--accent);flex:none;margin:0}
+.check span{font-size:15px;line-height:1.35}
+.tabs{display:flex;gap:12px;margin-bottom:22px}
+.tab{flex:1 1 50%;font-family:var(--font-heading);font-weight:600;font-size:15px;color:var(--sub);background:#fff;border:1px solid var(--border);border-radius:14px;padding:13px 20px;cursor:pointer;min-height:48px}
 .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
 .pill{display:inline-block;font-size:12px;font-weight:500;letter-spacing:0.03em;border-radius:8px;padding:3px 10px}
 .pill-on{background:rgba(37,211,102,0.15);color:#1EA552}
@@ -77,13 +83,45 @@ h1,h2,h3{font-family:var(--font-heading);font-weight:600;letter-spacing:-0.01em}
 .preis{font-family:var(--font-heading);font-weight:600;font-size:1.4rem;color:var(--accent);white-space:nowrap}
 .specs{display:flex;gap:14px;flex-wrap:wrap;color:var(--sub);font-size:14px;margin-top:6px}
 .specs b{color:var(--ink);font-family:var(--font-heading);font-weight:600}
+/* Neue Trefferkarte */
+.angebot{background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-sm);padding:16px 18px;margin-bottom:12px;display:grid;grid-template-columns:auto 1fr auto;gap:6px 14px;align-items:start}
+.angebot.sel{border-color:var(--accent);box-shadow:0 0 0 2px rgba(26,109,212,0.22)}
+.angebot .selbox{grid-row:1 / span 2;display:flex;align-items:center}
+.angebot .selbox input{width:22px;height:22px;accent-color:var(--accent);cursor:pointer;margin:0}
+.angebot .kopf h3{font-size:1.1rem;line-height:1.2}
+.angebot .kopf .variante{color:var(--light);font-weight:400;font-size:0.9rem}
+.angebot .rechts{text-align:right;min-width:150px}
+.angebot .rechts .preis{font-size:1.35rem}
+.angebot .rechts .brutto{font-size:0.9rem;color:var(--sub);font-weight:500}
+.specrow{grid-column:2 / -1;display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.spec-chip{background:#F4F7FB;border:1px solid var(--border);border-radius:8px;padding:4px 10px;font-size:13px;color:var(--sub);white-space:nowrap}
+.spec-chip b{color:var(--ink);font-family:var(--font-heading);font-weight:600}
+.angebot .foot{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px solid var(--border);margin-top:10px;padding-top:10px}
+.angebot .foot .btn{font-size:13px;padding:8px 14px;min-height:40px}
+.angebot .quelle-info{font-size:13px;color:var(--light)}
+.angebot .quelle-info b{color:var(--ink)}
+@media(max-width:640px){.angebot{grid-template-columns:auto 1fr}.angebot .rechts{grid-column:1 / -1;text-align:left;margin-top:4px}}
+.selbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:14px;padding:10px 16px;margin-bottom:14px}
+.selbar label{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer}
+.selbar label input{width:20px;height:20px;accent-color:var(--accent)}
+.selbar .sc{color:var(--accent);font-family:var(--font-heading);font-weight:600}
 .filterbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:16px}
 .chip{font-size:14px;font-weight:500;color:var(--sub);background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px 14px;cursor:pointer}
 .chip.active{background:rgba(26,109,212,0.10);color:var(--accent);border-color:var(--accent)}
+.fpanel{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-sm);padding:18px;margin-bottom:16px}
+.fpanel .field{margin-bottom:10px}
+.fpanel input,.fpanel select{width:100%;font-family:var(--font-body);font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px 12px;min-height:48px}
+.fpanel input:focus,.fpanel select:focus{outline:2px solid rgba(26,109,212,0.35);border-color:var(--accent)}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.wfilter{display:flex;gap:12px;align-items:center}
+.wfilter input,.wfilter select{width:auto;flex:1 1 0;min-width:0;max-width:none;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;min-height:48px;font-family:var(--font-body);font-size:16px;color:var(--ink)}
+.wfilter input:focus,.wfilter select:focus{outline:2px solid rgba(26,109,212,0.35);border-color:var(--accent)}
+@media(max-width:560px){.wfilter{flex-wrap:wrap}.wfilter input,.wfilter select{flex:1 1 100%}}
+.frow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+.treffer{font-family:var(--font-heading);font-weight:600;color:var(--accent)}
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
 .topbar .who{font-size:13px;color:var(--light)}
 footer{text-align:center;color:var(--light);font-size:13px;padding:20px 0 40px}
-#loading{text-align:center;color:var(--sub);padding:30px;display:none}
 </style>
 </head>
 <body>
@@ -93,8 +131,8 @@ footer{text-align:center;color:var(--light);font-size:13px;padding:20px 0 40px}
   <div id="view-login" style="display:none">
     <div class="section" style="max-width:460px;margin:8vh auto 30px">
       <div class="section-h">
-        <span class="label">&#128663; B2B-Ankauf</span>
-        <h1>Pipeline <em>anmelden</em></h1>
+        <span class="label">&#128663; Fahrzeugsuche B2B</span>
+        <h1>Suche <em>anmelden</em></h1>
         <p>Dein Zugang zur Fahrzeug-Wunschliste.</p>
       </div>
       <div class="card">
@@ -114,27 +152,37 @@ footer{text-align:center;color:var(--light);font-size:13px;padding:20px 0 40px}
       <button class="btn btn-ghost" style="font-size:14px;padding:9px 16px" onclick="doLogout()">Abmelden</button>
     </div>
 
-    <div class="tabs">
-      <button class="tab active" id="tab-wunsch" onclick="showTab('wunsch')">&#128203; Wunschliste</button>
-      <button class="tab" id="tab-angebote" onclick="showTab('angebote')">&#128230; Angebote</button>
+    <!-- ===== Kopf-Box (hellblau) ===== -->
+    <div class="section kopf-box">
+      <div class="section-h" style="margin-bottom:18px">
+        <span class="label">&#128663; B2B-Ankauf</span>
+        <h1>Fahrzeugsuche <em>B2B Scraper</em></h1>
+        <p>Automatische Vor-Selektion von Gebrauchtwagen aus B2B-Quellen &mdash; jede Suche wird manuell gestartet.</p>
+      </div>
+      <div class="tabs">
+        <button class="tab active" id="tab-wunsch" onclick="showTab('wunsch')">&#128203; Suchen</button>
+        <button class="tab" id="tab-angebote" onclick="showTab('angebote')">&#128230; Gefundene Fahrzeuge</button>
+      </div>
+      <div id="suchen-controls">
+        <button class="btn btn-primary btn-block" style="margin-top:16px" onclick="openForm(null)">+ Neue Suche anlegen</button>
+        <div class="btn-sub" id="scan-status">Kein automatischer Abruf. Ein Klick durchsucht ausschlie&szlig;lich die gew&auml;hlte Suche (startet in unter 1 Minute).</div>
+        <div class="wfilter" style="margin-top:14px">
+          <input type="text" id="wf-text" placeholder="&#128269; Suche filtern (Marke, Modell) &hellip;" oninput="renderWunschliste()">
+          <select id="wf-status" onchange="renderWunschliste()">
+            <option value="">Alle Suchen</option>
+            <option value="aktiv">Nur aktive</option>
+            <option value="pausiert">Nur pausierte</option>
+          </select>
+        </div>
+      </div>
     </div>
 
-    <!-- ---- Wunschliste ---- -->
+    <!-- ---- Suchen: Liste ---- -->
     <div id="pane-wunsch">
-      <div class="section">
-        <div class="section-h">
-          <span class="label">&#128203; Wunschliste</span>
-          <h1>Diese Fahrzeuge <em>suchen wir</em></h1>
-          <p>Der Scraper prueft alle B2B-Angebote gegen diese Kriterien &mdash; werktags alle 30 Minuten.</p>
-        </div>
-        <div style="text-align:center;margin-bottom:18px">
-          <button class="btn btn-primary" onclick="openForm(null)">+ Neue Suche anlegen</button>
-        </div>
-        <div id="wunsch-msg" class="msg"></div>
-        <div id="wunsch-list"></div>
-      </div>
+      <div id="wunsch-msg" class="msg"></div>
+      <div id="wunsch-list"></div>
 
-      <!-- Formular -->
+      <!-- Formular (Reihenfolge wie mobile.de) -->
       <div class="section" id="form-section" style="display:none">
         <div class="section-h">
           <span class="label">&#9998; Suche bearbeiten</span>
@@ -143,32 +191,56 @@ footer{text-align:center;color:var(--light);font-size:13px;padding:20px 0 40px}
         <div class="card">
           <input type="hidden" id="f-id">
           <div class="grid2">
-            <div class="field"><label>Bezeichnung (frei waehlbar)</label><input type="text" id="f-bezeichnung" placeholder="z. B. Tucson N-Line jung"></div>
-            <div class="field"><label>Marke (Pflicht, exakt)</label><input type="text" id="f-marke" placeholder="z. B. Hyundai"></div>
+            <div class="field"><label>Marke</label>
+              <input type="text" id="f-marke" list="marken-liste" placeholder="z. B. Hyundai">
+              <datalist id="marken-liste"></datalist>
+            </div>
+            <div class="field"><label>Modell</label><input type="text" id="f-modell" placeholder="z. B. Tucson"></div>
+          </div>
+          <div class="field"><label>Modellvariante / Ausstattungslinie</label><input type="text" id="f-typ" placeholder="z. B. N-Line, GS, R-Line"></div>
+          <div class="grid2">
+            <div class="field"><label>Erstzulassung von</label><select id="f-bj_von"></select></div>
+            <div class="field"><label>Erstzulassung bis</label><select id="f-bj_bis"></select></div>
+          </div>
+          <div class="field"><label>Kilometerstand bis</label>
+            <select id="f-km_max">
+              <option value="">egal</option>
+              <option value="500">500 km (Neuwagen/Tageszulassung)</option>
+              <option value="5000">5.000 km</option>
+              <option value="10000">10.000 km</option>
+              <option value="20000">20.000 km</option>
+              <option value="30000">30.000 km</option>
+              <option value="50000">50.000 km</option>
+              <option value="80000">80.000 km</option>
+              <option value="100000">100.000 km</option>
+              <option value="125000">125.000 km</option>
+              <option value="150000">150.000 km</option>
+            </select>
+          </div>
+          <div class="field"><label>Kraftstoff (leer = egal)</label>
+            <div class="checks" id="f-kraftstoff">
+              <label class="check"><input type="checkbox" value="Benzin"><span>Benzin</span></label>
+              <label class="check"><input type="checkbox" value="Diesel"><span>Diesel</span></label>
+              <label class="check"><input type="checkbox" value="Elektro"><span>Elektro</span></label>
+              <label class="check"><input type="checkbox" value="Hybrid"><span>Hybrid</span></label>
+              <label class="check"><input type="checkbox" value="Plug-in Hybrid"><span>Plug-in Hybrid</span></label>
+              <label class="check"><input type="checkbox" value="Mild-Hybrid"><span>Mild-Hybrid</span></label>
+              <label class="check"><input type="checkbox" value="Autogas"><span>Autogas (LPG)</span></label>
+              <label class="check"><input type="checkbox" value="Erdgas"><span>Erdgas (CNG)</span></label>
+            </div>
           </div>
           <div class="grid2">
-            <div class="field"><label>Modell (Teiltext)</label><input type="text" id="f-modell" placeholder="z. B. Tucson"></div>
-            <div class="field"><label>Typ / Linie (Teiltext)</label><input type="text" id="f-typ" placeholder="z. B. N-Line"></div>
-          </div>
-          <div class="grid3">
-            <div class="field"><label>Baujahr von</label><input type="number" id="f-bj_von" placeholder="2022"></div>
-            <div class="field"><label>Baujahr bis</label><input type="number" id="f-bj_bis" placeholder="2026"></div>
-            <div class="field"><label>km max</label><input type="number" id="f-km_max" placeholder="50000"></div>
-          </div>
-          <div class="grid3">
-            <div class="field"><label>Preis max (netto &euro;)</label><input type="number" id="f-preis_einkauf_max" placeholder="25000"></div>
-            <div class="field"><label>PS von</label><input type="number" id="f-ps_von" placeholder="130"></div>
-            <div class="field"><label>PS bis</label><input type="number" id="f-ps_bis" placeholder="250"></div>
+            <div class="field"><label>Leistung von (PS)</label><input type="number" id="f-ps_von" placeholder="z. B. 130"></div>
+            <div class="field"><label>Leistung bis (PS)</label><input type="number" id="f-ps_bis" placeholder="z. B. 250"></div>
           </div>
           <div class="field"><label>Getriebe (leer = egal)</label>
             <div class="checks" id="f-getriebe">
               <label class="check"><input type="checkbox" value="Automatik"><span>Automatik</span></label>
               <label class="check"><input type="checkbox" value="Doppelkupplung (DSG/DKG)"><span>Doppelkupplung (DSG/DKG)</span></label>
               <label class="check"><input type="checkbox" value="Schaltgetriebe"><span>Schaltgetriebe</span></label>
-              <label class="check"><input type="checkbox" value="CVT"><span>CVT</span></label>
             </div>
           </div>
-          <div class="field"><label>Pflicht-Ausstattung (Haken = muss vorhanden sein)</label>
+          <div class="field"><label>Ausstattung (Haken = muss vorhanden sein)</label>
             <div class="checks">
               <label class="check"><input type="checkbox" id="f-navigation"><span>Navigation</span></label>
               <label class="check"><input type="checkbox" id="f-apple_carplay"><span>Apple CarPlay</span></label>
@@ -176,36 +248,89 @@ footer{text-align:center;color:var(--light);font-size:13px;padding:20px 0 40px}
               <label class="check"><input type="checkbox" id="f-kamera_360"><span>360&deg;-Kamera</span></label>
               <label class="check"><input type="checkbox" id="f-sitzheizung"><span>Sitzheizung</span></label>
               <label class="check"><input type="checkbox" id="f-lenkradheizung"><span>Lenkradheizung</span></label>
+              <label class="check"><input type="checkbox" id="f-panoramadach"><span>Panoramadach</span></label>
             </div>
           </div>
+          <div class="grid2">
+            <div class="field"><label>Preis von (netto &euro;)</label><input type="number" id="f-preis_einkauf_von" placeholder="z. B. 10000"></div>
+            <div class="field"><label>Preis bis (netto &euro;)</label><input type="number" id="f-preis_einkauf_max" placeholder="z. B. 25000"></div>
+          </div>
+          <div class="field"><label>Bezeichnung der Suche (optional)</label><input type="text" id="f-bezeichnung" placeholder="z. B. Tucson N-Line jung"></div>
           <div class="field">
             <label class="check" style="max-width:320px"><input type="checkbox" id="f-aktive_suche" checked><span><b>Suche aktiv</b> &mdash; laeuft im naechsten Scan mit</span></label>
           </div>
           <div id="form-msg" class="msg"></div>
           <div class="actions">
-            <button class="btn btn-primary" onclick="saveForm()">Speichern &rarr;</button>
+            <button class="btn btn-primary" onclick="saveForm(false)">Speichern &rarr;</button>
+            <button class="btn btn-go" onclick="saveForm(true)">Speichern + jetzt suchen &#128269;</button>
             <button class="btn btn-ghost" onclick="closeForm()">Abbrechen</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ---- Angebote ---- -->
+    <!-- ---- Gefundene Fahrzeuge ---- -->
     <div id="pane-angebote" style="display:none">
       <div class="section">
         <div class="section-h">
-          <span class="label">&#128230; Angebote</span>
+          <span class="label">&#128230; Treffer</span>
           <h1>Gefundene <em>Fahrzeuge</em></h1>
-          <p>Alle Treffer aus den B2B-Quellen, neueste zuerst.</p>
+          <p>Alle Treffer aus den B2B-Quellen.</p>
         </div>
         <div class="quellen" id="quellen"></div>
         <div class="filterbar" id="status-filter"></div>
+
+        <!-- Filter-Panel wie mobile.de -->
+        <div class="fpanel">
+          <div class="fgrid">
+            <select id="af-marke" onchange="renderAngebote()"><option value="">Alle Marken</option></select>
+            <input type="text" id="af-modell" placeholder="Modell / Variante &hellip;" oninput="renderAngebote()">
+            <select id="af-ez_von" onchange="renderAngebote()"></select>
+            <select id="af-ez_bis" onchange="renderAngebote()"></select>
+            <select id="af-km" onchange="renderAngebote()">
+              <option value="">km egal</option>
+              <option value="500">bis 500 km</option>
+              <option value="10000">bis 10.000 km</option>
+              <option value="30000">bis 30.000 km</option>
+              <option value="50000">bis 50.000 km</option>
+              <option value="100000">bis 100.000 km</option>
+              <option value="150000">bis 150.000 km</option>
+            </select>
+            <select id="af-kraftstoff" onchange="renderAngebote()"><option value="">Kraftstoff egal</option></select>
+            <input type="number" id="af-ps_von" placeholder="PS von" oninput="renderAngebote()">
+            <input type="number" id="af-ps_bis" placeholder="PS bis" oninput="renderAngebote()">
+            <select id="af-getriebe" onchange="renderAngebote()"><option value="">Getriebe egal</option></select>
+            <input type="number" id="af-preis_von" placeholder="Preis von &euro;" oninput="renderAngebote()">
+            <input type="number" id="af-preis_bis" placeholder="Preis bis &euro;" oninput="renderAngebote()">
+            <select id="af-sort" onchange="renderAngebote()">
+              <option value="datum">Neueste zuerst</option>
+              <option value="preis_auf">Preis aufsteigend</option>
+              <option value="preis_ab">Preis absteigend</option>
+              <option value="km_auf">km aufsteigend</option>
+              <option value="ez_neu">EZ neueste zuerst</option>
+              <option value="score">Match-Score</option>
+            </select>
+          </div>
+          <div class="frow">
+            <span class="treffer" id="treffer-anzahl"></span>
+            <span style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn btn-danger" style="font-size:14px;padding:9px 16px" onclick="delVerwaiste()">&#128465;&#65039; Treffer ohne Suche loeschen</button>
+              <button class="btn btn-ghost" style="font-size:14px;padding:9px 16px" onclick="resetAngebotsFilter()">Filter zur&uuml;cksetzen</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="selbar">
+          <label><input type="checkbox" id="sel-all" onclick="toggleSelectAll(this.checked)"> Alle sichtbaren ausw&auml;hlen</label>
+          <span class="sc" id="sel-count">0 ausgew&auml;hlt</span>
+          <button class="btn btn-danger" style="font-size:14px;padding:9px 16px" onclick="delSelected()">&#128465;&#65039; Ausgew&auml;hlte Fahrzeuge l&ouml;schen</button>
+        </div>
         <div id="angebote-msg" class="msg"></div>
         <div id="angebote-list"></div>
       </div>
     </div>
 
-    <div id="loading">Lade Daten &hellip;</div>
+    <div id="loading" style="display:none;text-align:center;color:var(--sub);padding:30px">Lade Daten &hellip;</div>
   </div>
 
   <footer>Autohaus Stieber GmbH &middot; Emerholzweg 5 &middot; 70439 Stuttgart-Stammheim</footer>
@@ -216,10 +341,21 @@ var SUPABASE_URL = "https://mnglpqeqmoxccqnztqez.supabase.co";
 var SUPABASE_KEY = "sb_publishable_CDpY6_W07WdHFKYv0cx59g_GDm7UlZF";
 var db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY, { db: { schema: "ankauf" } });
 
-var BOOLS = ["navigation","apple_carplay","rueckfahrkamera","kamera_360","sitzheizung","lenkradheizung"];
-var BOOL_NAMES = {navigation:"Navi",apple_carplay:"CarPlay",rueckfahrkamera:"R-Kamera",kamera_360:"360&deg;",sitzheizung:"Sitzhzg.",lenkradheizung:"Lenkradhzg."};
+var MARKEN = ["Abarth","Alfa Romeo","Audi","BMW","BYD","Citroen","Cupra","Dacia","DS","Fiat","Ford","Honda","Hyundai","Jaguar","Jeep","Kia","Land Rover","Lexus","Mazda","Mercedes-Benz","MG","Mini","Mitsubishi","Nissan","Opel","Peugeot","Polestar","Porsche","Renault","Seat","Skoda","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"];
+var KRAFTSTOFFE = ["Benzin","Diesel","Elektro","Hybrid","Plug-in Hybrid","Mild-Hybrid","Autogas","Erdgas"];
+var GETRIEBE_OPT = ["Automatik","Doppelkupplung (DSG/DKG)","Schaltgetriebe"];
+var BOOLS = ["navigation","apple_carplay","rueckfahrkamera","kamera_360","sitzheizung","lenkradheizung","panoramadach"];
+var BOOL_NAMES = {navigation:"Navi",apple_carplay:"CarPlay",rueckfahrkamera:"R-Kamera",kamera_360:"360&deg;",sitzheizung:"Sitzhzg.",lenkradheizung:"Lenkradhzg.",panoramadach:"Panoramadach"};
 var statusFilter = "";
 var alleAngebote = [];
+var alleWuensche = [];
+var currentUser = null;
+var scanActive = false;
+function setScanActive(on){
+  if (scanActive === on) return;
+  scanActive = on;
+  renderWunschliste();
+}
 
 function el(id){ return document.getElementById(id); }
 function esc(s){ return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
@@ -227,8 +363,23 @@ function msg(id, text, ok){ var m = el(id); m.className = "msg " + (ok ? "ok" : 
 function fmtNum(n){ return n == null ? "&ndash;" : Number(n).toLocaleString("de-DE"); }
 function fmtEur(n){ return n == null ? "&ndash;" : Number(n).toLocaleString("de-DE") + " &euro;"; }
 
+// Jahr-Dropdowns (2010 bis aktuelles Jahr+1)
+function fillYears(sel, leerText){
+  var y = new Date().getFullYear() + 1;
+  var html = '<option value="">' + leerText + "</option>";
+  for (var i = y; i >= 2010; i--) html += '<option value="' + i + '">' + i + "</option>";
+  sel.innerHTML = html;
+}
+
 // ---------- Auth ----------
 async function init(){
+  el("marken-liste").innerHTML = MARKEN.map(function(m){ return '<option value="' + m + '">'; }).join("");
+  fillYears(el("f-bj_von"), "egal");
+  fillYears(el("f-bj_bis"), "egal");
+  fillYears(el("af-ez_von"), "EZ von");
+  fillYears(el("af-ez_bis"), "EZ bis");
+  el("af-kraftstoff").innerHTML = '<option value="">Kraftstoff egal</option>' + KRAFTSTOFFE.map(function(k){ return '<option value="' + k + '">' + k + "</option>"; }).join("");
+  el("af-getriebe").innerHTML = '<option value="">Getriebe egal</option>' + GETRIEBE_OPT.map(function(g){ return '<option value="' + esc(g) + '">' + esc(g) + "</option>"; }).join("");
   var s = await db.auth.getSession();
   if (s.data.session) { showApp(s.data.session.user); } else { el("view-login").style.display = "block"; }
 }
@@ -240,86 +391,194 @@ async function doLogin(){
 }
 async function doLogout(){ await db.auth.signOut(); location.reload(); }
 function showApp(user){
+  currentUser = user;
   el("view-app").style.display = "block";
   el("who").textContent = "Angemeldet als " + (user.email || "");
   loadWunschliste();
   loadAngebote();
+  checkScanStatus();
 }
 el("login-pass").addEventListener("keydown", function(e){ if (e.key === "Enter") doLogin(); });
 
-// ---------- Wunschliste ----------
+// ---------- Scan jetzt starten ----------
+var scanPoll = null;
+var scanWunschId = null;   // welche Suche laeuft gerade (fuer die Karten-Anzeige)
+async function startScan(wunschId){
+  if (!wunschId) { msg("wunsch-msg", "Bitte den Button an einer konkreten Suche verwenden.", false); return; }
+  // Suche muss aktiv sein, damit der Scraper sie beruecksichtigt
+  var u = await db.from("wunschliste").update({ aktive_suche: true }).eq("id", wunschId);
+  if (u.error) { msg("wunsch-msg", esc(u.error.message), false); return; }
+  var r = await db.from("scan_jobs")
+    .insert({ angefordert_von: (currentUser && currentUser.email) || "", wunschliste_id: wunschId })
+    .select().single();
+  if (r.error) { msg("wunsch-msg", "Auftrag fehlgeschlagen: " + esc(r.error.message), false); return; }
+  scanWunschId = wunschId;
+  setScanStatus("&#9203; SUCHE BEAUFTRAGT &ndash; startet in unter 1 Minute", "rot");
+  setScanActive(true);
+  loadWunschliste();
+  pollScan(r.data.id);
+}
+function pollScan(jobId){
+  if (scanPoll) clearInterval(scanPoll);
+  scanPoll = setInterval(async function(){
+    var r = await db.from("scan_jobs").select("*").eq("id", jobId).single();
+    if (r.error || !r.data) return;
+    var j = r.data;
+    if (j.wunschliste_id) scanWunschId = j.wunschliste_id;
+    if (j.status === "laeuft") {
+      setScanStatus("&#128260; SUCHE L&Auml;UFT GERADE &hellip;", "rot");
+      setScanActive(true);
+    } else if (j.status === "erledigt") {
+      clearInterval(scanPoll); scanPoll = null;
+      setScanStatus("&#9989; SUCHE ABGESCHLOSSEN" + (j.ergebnis ? " &ndash; " + esc(j.ergebnis) : ""), "gruen");
+      scanActive = false; scanWunschId = null;
+      loadAngebote();
+      loadWunschliste();
+    } else if (j.status === "fehler") {
+      clearInterval(scanPoll); scanPoll = null;
+      setScanStatus("&#9888;&#65039; SUCHE FEHLGESCHLAGEN" + (j.ergebnis ? ": " + esc(j.ergebnis) : ""), "rot");
+      scanActive = false; scanWunschId = null;
+      loadWunschliste();
+    }
+  }, 10000);
+}
+async function checkScanStatus(){
+  var r = await db.from("scan_jobs").select("*").in("status", ["offen","laeuft"]).order("id", { ascending: false }).limit(1);
+  if (!r.error && r.data && r.data.length) {
+    scanWunschId = r.data[0].wunschliste_id || null;
+    setScanStatus("&#9203; EIN SUCHAUFTRAG IST BEREITS UNTERWEGS &hellip;", "rot");
+    setScanActive(true);
+    pollScan(r.data[0].id);
+  }
+}
+function setScanStatus(html, farbe){
+  var s = el("scan-status");
+  s.className = "scan-banner " + (farbe || "rot");
+  s.innerHTML = html;
+}
+
+// ---------- Suchen (Wunschliste) ----------
 async function loadWunschliste(){
   var r = await db.from("wunschliste").select("*").order("id");
   if (r.error) { msg("wunsch-msg", "Fehler beim Laden: " + esc(r.error.message), false); return; }
-  var rows = (r.data || []).filter(function(w){ return (w.bezeichnung || w.marke || w.modell || "").trim() !== ""; });
+  alleWuensche = (r.data || []).filter(function(w){ return (w.bezeichnung || w.marke || w.modell || "").trim() !== ""; });
+  renderWunschliste();
+}
+function renderWunschliste(){
+  var rows = alleWuensche.slice();
+  var q = (el("wf-text").value || "").trim().toLowerCase();
+  if (q) rows = rows.filter(function(w){
+    return ((w.bezeichnung || "") + " " + (w.marke || "") + " " + (w.modell || "") + " " + (w.typ || "")).toLowerCase().indexOf(q) >= 0;
+  });
+  var st = el("wf-status").value;
+  if (st === "aktiv") rows = rows.filter(function(w){ return w.aktive_suche; });
+  if (st === "pausiert") rows = rows.filter(function(w){ return !w.aktive_suche; });
+
   var html = "";
   rows.forEach(function(w){
     var crit = [];
     if (w.marke) crit.push("<b>" + esc(w.marke) + "</b>");
     if (w.modell) crit.push("<b>" + esc(w.modell) + "</b>");
     if (w.typ) crit.push(esc(w.typ));
-    if (w.bj_von || w.bj_bis) crit.push("Bj " + (w.bj_von || "&hellip;") + "&ndash;" + (w.bj_bis || "&hellip;"));
-    if (w.km_max) crit.push("max " + fmtNum(w.km_max) + " km");
-    if (w.preis_einkauf_max) crit.push("max " + fmtEur(w.preis_einkauf_max) + " netto");
+    if (w.bj_von || w.bj_bis) crit.push("EZ " + (w.bj_von || "&hellip;") + "&ndash;" + (w.bj_bis || "&hellip;"));
+    if (w.km_max) crit.push("bis " + fmtNum(w.km_max) + " km");
+    if (w.kraftstoff && w.kraftstoff.length) crit.push(esc(w.kraftstoff.join("/")));
     if (w.ps_von || w.ps_bis) crit.push((w.ps_von || "?") + "&ndash;" + (w.ps_bis || "?") + " PS");
     if (w.getriebe && w.getriebe.length) crit.push(esc(w.getriebe.join(" / ")));
     var feats = BOOLS.filter(function(b){ return w[b]; }).map(function(b){ return BOOL_NAMES[b]; });
     if (feats.length) crit.push("Pflicht: " + feats.join(", "));
+    if (w.preis_einkauf_von || w.preis_einkauf_max) crit.push("Preis " + (w.preis_einkauf_von ? fmtNum(w.preis_einkauf_von) : "&hellip;") + "&ndash;" + (w.preis_einkauf_max ? fmtNum(w.preis_einkauf_max) : "&hellip;") + " &euro; netto");
+    // Status-Zeile: laeuft gerade / letzte Suche am ... / noch nie gesucht
+    var statusHtml = "";
+    if (scanActive && scanWunschId === w.id) {
+      statusHtml = '<div style="color:#E74C3C;font-family:var(--font-heading);font-weight:700;font-size:1.05rem;margin-top:8px">&#128260; Suche l&auml;uft &hellip;</div>';
+    } else if (w.letzter_scan_am) {
+      var ts = new Date(w.letzter_scan_am).toLocaleString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
+      statusHtml = '<div style="color:var(--sub);font-size:14px;margin-top:8px">&#128337; Letzte Suche: <b style="color:var(--ink)">' + ts + " Uhr</b>"
+        + (w.treffer_letzter_scan != null ? " &middot; " + w.treffer_letzter_scan + " Treffer" : "") + "</div>";
+    } else {
+      statusHtml = '<div class="muted" style="margin-top:8px">Noch nie gesucht</div>';
+    }
+    var hinweisHtml = "";
+    if (w.treffer_hinweis) {
+      hinweisHtml = '<div style="background:rgba(245,200,66,0.18);color:#B88A00;border-radius:10px;padding:8px 12px;margin-top:8px;font-size:14px">&#9888;&#65039; ' + esc(w.treffer_hinweis) + "</div>";
+    }
     html += '<div class="card">'
       + '<div class="row-head"><h3>' + esc(w.bezeichnung || (w.marke + " " + (w.modell || ""))) + "</h3>"
       + '<span class="pill ' + (w.aktive_suche ? "pill-on" : "pill-off") + '">' + (w.aktive_suche ? "aktiv" : "pausiert") + "</span></div>"
       + '<div class="crit">' + (crit.join(" &middot; ") || "keine Kriterien") + "</div>"
+      + statusHtml
+      + hinweisHtml
       + '<div class="actions">'
+      + '<button class="btn btn-go" onclick="startScan(' + w.id + ')">&#128269; Suche jetzt starten</button>'
       + '<button class="btn btn-ghost" onclick="openForm(' + w.id + ')">Bearbeiten</button>'
       + '<button class="btn btn-ghost" onclick="toggleAktiv(' + w.id + "," + !w.aktive_suche + ')">' + (w.aktive_suche ? "Pausieren" : "Aktivieren") + "</button>"
-      + '<button class="btn btn-danger" onclick="delWunsch(' + w.id + ')">Loeschen</button>'
+      + '<button class="btn btn-danger" onclick="delTreffer(' + w.id + ')">&#128465;&#65039; Treffer loeschen</button>'
+      + '<button class="btn btn-danger" onclick="delWunsch(' + w.id + ')">Suche loeschen</button>'
       + "</div></div>";
   });
-  el("wunsch-list").innerHTML = html || '<div class="card muted">Noch keine Suchen angelegt.</div>';
-  window._wunsch = rows;
+  el("wunsch-list").innerHTML = html || '<div class="card muted">Keine Suche gefunden.</div>';
 }
 function openForm(id){
   el("form-section").style.display = "block";
   el("f-id").value = id || "";
   el("form-title").innerHTML = id ? "Suche <em>bearbeiten</em>" : "Neue <em>Suche</em>";
-  var w = (window._wunsch || []).find(function(x){ return x.id === id; }) || {};
-  el("f-bezeichnung").value = w.bezeichnung || "";
+  var w = alleWuensche.find(function(x){ return x.id === id; }) || {};
   el("f-marke").value = w.marke || "";
   el("f-modell").value = w.modell || "";
   el("f-typ").value = w.typ || "";
-  ["bj_von","bj_bis","km_max","preis_einkauf_max","ps_von","ps_bis"].forEach(function(f){ el("f-" + f).value = w[f] == null ? "" : w[f]; });
+  el("f-bezeichnung").value = w.bezeichnung || "";
+  ["bj_von","bj_bis","km_max","preis_einkauf_von","preis_einkauf_max","ps_von","ps_bis"].forEach(function(f){ el("f-" + f).value = w[f] == null ? "" : w[f]; });
   var g = w.getriebe || [];
   el("f-getriebe").querySelectorAll("input").forEach(function(c){ c.checked = g.indexOf(c.value) >= 0; });
+  var k = w.kraftstoff || [];
+  el("f-kraftstoff").querySelectorAll("input").forEach(function(c){ c.checked = k.indexOf(c.value) >= 0; });
   BOOLS.forEach(function(b){ el("f-" + b).checked = !!w[b]; });
   el("f-aktive_suche").checked = w.id ? !!w.aktive_suche : true;
   el("form-section").scrollIntoView({ behavior: "smooth" });
 }
 function closeForm(){ el("form-section").style.display = "none"; }
-function numOrNull(id){ var v = el(id).value.trim(); return v === "" ? null : parseInt(v, 10); }
-async function saveForm(){
+function numOrNull(id){ var v = el(id).value.toString().trim(); return v === "" ? null : parseInt(v, 10); }
+async function saveForm(scanDanach){
   var marke = el("f-marke").value.trim();
   if (!marke) { msg("form-msg", "Bitte mindestens die Marke angeben.", false); return; }
-  var getriebe = [];
-  el("f-getriebe").querySelectorAll("input:checked").forEach(function(c){ getriebe.push(c.value); });
+  var getriebe = []; el("f-getriebe").querySelectorAll("input:checked").forEach(function(c){ getriebe.push(c.value); });
+  var kraftstoff = []; el("f-kraftstoff").querySelectorAll("input:checked").forEach(function(c){ kraftstoff.push(c.value); });
   var row = {
     bezeichnung: el("f-bezeichnung").value.trim() || (marke + " " + el("f-modell").value.trim()).trim(),
     marke: marke,
     modell: el("f-modell").value.trim(),
     typ: el("f-typ").value.trim(),
     bj_von: numOrNull("f-bj_von"), bj_bis: numOrNull("f-bj_bis"),
-    km_max: numOrNull("f-km_max"), preis_einkauf_max: numOrNull("f-preis_einkauf_max"),
+    km_max: numOrNull("f-km_max"),
+    kraftstoff: kraftstoff,
     ps_von: numOrNull("f-ps_von"), ps_bis: numOrNull("f-ps_bis"),
     getriebe: getriebe,
-    aktive_suche: el("f-aktive_suche").checked
+    preis_einkauf_von: numOrNull("f-preis_einkauf_von"),
+    preis_einkauf_max: numOrNull("f-preis_einkauf_max"),
+    aktive_suche: scanDanach ? true : el("f-aktive_suche").checked
   };
   BOOLS.forEach(function(b){ row[b] = el("f-" + b).checked; });
+  // Warnung bei sehr breiter Suche (nur Marke/Modell, keine Eingrenzung)
+  var eingrenzungen = 0;
+  if (row.bj_von || row.bj_bis) eingrenzungen++;
+  if (row.km_max) eingrenzungen++;
+  if (kraftstoff.length) eingrenzungen++;
+  if (row.ps_von || row.ps_bis) eingrenzungen++;
+  if (getriebe.length) eingrenzungen++;
+  if (row.preis_einkauf_von || row.preis_einkauf_max) eingrenzungen++;
+  if (BOOLS.some(function(b){ return row[b]; })) eingrenzungen++;
+  if (eingrenzungen === 0) {
+    if (!confirm("Sehr breite Suche: Ausser Marke/Modell ist nichts eingegrenzt - das kann hunderte Treffer geben (gespeichert werden max. 50 pro Suche).\n\nEmpfehlung: Erstzulassung, km oder Preis eingrenzen.\n\nTrotzdem so speichern?")) return;
+  }
   var id = el("f-id").value;
   var r = id ? await db.from("wunschliste").update(row).eq("id", id)
              : await db.from("wunschliste").insert(row);
   if (r.error) { msg("form-msg", "Speichern fehlgeschlagen: " + esc(r.error.message), false); return; }
   closeForm();
-  msg("wunsch-msg", "Gespeichert. Der naechste Scan nutzt die neuen Kriterien.", true);
+  msg("wunsch-msg", scanDanach ? "Gespeichert &ndash; Suche wird gestartet." : "Gespeichert. Der naechste Scan nutzt die neuen Kriterien.", true);
   loadWunschliste();
+  if (scanDanach) startScan();
 }
 async function toggleAktiv(id, on){
   var r = await db.from("wunschliste").update({ aktive_suche: on }).eq("id", id);
@@ -328,12 +587,39 @@ async function toggleAktiv(id, on){
 }
 async function delWunsch(id){
   if (!confirm("Diese Suche wirklich loeschen?")) return;
+  var mitTreffern = confirm("Auch die gefundenen Fahrzeuge dieser Suche mitloeschen?\n\nOK = Fahrzeuge mitloeschen\nAbbrechen = Fahrzeuge behalten");
+  if (mitTreffern) {
+    var t = await db.from("angebote").delete().eq("match_wunschliste_id", id).select("id");
+    if (t.error) { msg("wunsch-msg", "Treffer-Loeschen fehlgeschlagen: " + esc(t.error.message), false); return; }
+  }
   var r = await db.from("wunschliste").delete().eq("id", id);
   if (r.error) { msg("wunsch-msg", "Loeschen fehlgeschlagen: " + esc(r.error.message), false); return; }
+  msg("wunsch-msg", "Suche geloescht" + (mitTreffern ? " inkl. Treffer" : "") + ".", true);
   loadWunschliste();
+  loadAngebote();
+}
+async function delVerwaiste(){
+  var c = await db.from("angebote").select("id", { count: "exact", head: true }).is("match_wunschliste_id", null);
+  var anzahl = c.count || 0;
+  if (!anzahl) { msg("angebote-msg", "Keine Fahrzeuge ohne Suche vorhanden.", true); return; }
+  if (!confirm(anzahl + " Fahrzeug(e) sind keiner Suche mehr zugeordnet (Suche wurde geloescht).\n\nAlle loeschen?")) return;
+  var r = await db.from("angebote").delete().is("match_wunschliste_id", null).select("id");
+  if (r.error) { msg("angebote-msg", "Loeschen fehlgeschlagen: " + esc(r.error.message), false); return; }
+  msg("angebote-msg", (r.data || []).length + " Fahrzeug(e) ohne Suche geloescht.", true);
+  loadAngebote();
+}
+async function delTreffer(id){
+  var w = alleWuensche.find(function(x){ return x.id === id; }) || {};
+  var name = w.bezeichnung || (w.marke + " " + (w.modell || ""));
+  if (!confirm("Alle gefundenen Fahrzeuge der Suche '" + name + "' loeschen?\n\nDokumentierte Kaeufe bleiben erhalten.")) return;
+  var r = await db.from("angebote").delete().eq("match_wunschliste_id", id).select("id");
+  if (r.error) { msg("wunsch-msg", "Loeschen fehlgeschlagen: " + esc(r.error.message), false); return; }
+  var n = (r.data || []).length;
+  msg("wunsch-msg", n + " Fahrzeug(e) der Suche '" + esc(name) + "' geloescht.", true);
+  loadAngebote();
 }
 
-// ---------- Angebote + Quellen ----------
+// ---------- Gefundene Fahrzeuge ----------
 async function loadAngebote(){
   var q = await db.from("quellen_log").select("*").order("quelle");
   if (!q.error) {
@@ -347,8 +633,8 @@ async function loadAngebote(){
     el("quellen").innerHTML = qh;
   }
   var r = await db.from("angebote")
-    .select("id,hersteller,modell,typ,erstzulassung,km_stand,motorleistung_ps,getriebe,angebotspreis_netto,angebotspreis_brutto,status,match_score,ampel_bewertung,original_link,quelle_detail,angebotsdatum")
-    .order("angebotsdatum", { ascending: false }).limit(300);
+    .select("id,hersteller,modell,typ,erstzulassung,km_stand,motorleistung_ps,getriebe,kraftstoff,angebotspreis_netto,angebotspreis_brutto,mwst_ausweisbar,status,match_score,ampel_bewertung,original_link,quelle_detail,angebotsdatum,anbieter_name,anbieter_fahrzeug_nr")
+    .order("angebotsdatum", { ascending: false }).limit(500);
   if (r.error) { msg("angebote-msg", "Fehler beim Laden: " + esc(r.error.message), false); return; }
   alleAngebote = r.data || [];
   var statuses = {};
@@ -358,30 +644,149 @@ async function loadAngebote(){
     fh += '<span class="chip' + (statusFilter === s ? " active" : "") + '" onclick="setFilter(\'' + esc(s) + '\')">' + esc(s) + " (" + statuses[s] + ")</span>";
   });
   el("status-filter").innerHTML = fh;
+  var sel = el("af-marke");
+  var vorher = sel.value;
+  var marken = [...new Set(alleAngebote.map(function(a){ return a.hersteller; }).filter(Boolean))].sort();
+  sel.innerHTML = '<option value="">Alle Marken</option>' + marken.map(function(m){ return '<option value="' + esc(m) + '">' + esc(m) + "</option>"; }).join("");
+  sel.value = vorher;
   renderAngebote();
 }
-function setFilter(s){ statusFilter = s; loadAngebote(); }
+function setFilter(s){ statusFilter = s; renderStatusChips(); renderAngebote(); }
+function renderStatusChips(){
+  var statuses = {};
+  alleAngebote.forEach(function(a){ statuses[a.status] = (statuses[a.status] || 0) + 1; });
+  var fh = '<span class="chip' + (statusFilter === "" ? " active" : "") + '" onclick="setFilter(\'\')">Alle (' + alleAngebote.length + ")</span>";
+  Object.keys(statuses).sort().forEach(function(s){
+    fh += '<span class="chip' + (statusFilter === s ? " active" : "") + '" onclick="setFilter(\'' + esc(s) + '\')">' + esc(s) + " (" + statuses[s] + ")</span>";
+  });
+  el("status-filter").innerHTML = fh;
+}
+function resetAngebotsFilter(){
+  ["af-modell","af-ps_von","af-ps_bis","af-preis_von","af-preis_bis"].forEach(function(i){ el(i).value = ""; });
+  ["af-marke","af-ez_von","af-ez_bis","af-km","af-kraftstoff","af-getriebe"].forEach(function(i){ el(i).value = ""; });
+  el("af-sort").value = "datum";
+  statusFilter = "";
+  renderStatusChips();
+  renderAngebote();
+}
 function renderAngebote(){
-  var rows = statusFilter ? alleAngebote.filter(function(a){ return a.status === statusFilter; }) : alleAngebote;
+  var rows = statusFilter ? alleAngebote.filter(function(a){ return a.status === statusFilter; }) : alleAngebote.slice();
+
+  var marke = el("af-marke").value;
+  if (marke) rows = rows.filter(function(a){ return a.hersteller === marke; });
+
+  var q = (el("af-modell").value || "").trim().toLowerCase();
+  if (q) rows = rows.filter(function(a){
+    return ((a.hersteller || "") + " " + (a.modell || "") + " " + (a.typ || "")).toLowerCase().indexOf(q) >= 0;
+  });
+
+  var ezVon = el("af-ez_von").value, ezBis = el("af-ez_bis").value;
+  if (ezVon) rows = rows.filter(function(a){ return a.erstzulassung && new Date(a.erstzulassung).getFullYear() >= Number(ezVon); });
+  if (ezBis) rows = rows.filter(function(a){ return a.erstzulassung && new Date(a.erstzulassung).getFullYear() <= Number(ezBis); });
+
+  var km = el("af-km").value;
+  if (km) rows = rows.filter(function(a){ return a.km_stand != null && a.km_stand <= Number(km); });
+
+  var kraft = el("af-kraftstoff").value;
+  if (kraft) rows = rows.filter(function(a){ return (a.kraftstoff || []).indexOf(kraft) >= 0; });
+
+  var psVon = el("af-ps_von").value, psBis = el("af-ps_bis").value;
+  if (psVon) rows = rows.filter(function(a){ return a.motorleistung_ps != null && a.motorleistung_ps >= Number(psVon); });
+  if (psBis) rows = rows.filter(function(a){ return a.motorleistung_ps != null && a.motorleistung_ps <= Number(psBis); });
+
+  var getr = el("af-getriebe").value;
+  if (getr) rows = rows.filter(function(a){ return a.getriebe === getr; });
+
+  function preis(a){ var p = a.angebotspreis_netto != null ? a.angebotspreis_netto : a.angebotspreis_brutto; return p == null ? null : Number(p); }
+  var pVon = el("af-preis_von").value, pBis = el("af-preis_bis").value;
+  if (pVon) rows = rows.filter(function(a){ return preis(a) != null && preis(a) >= Number(pVon); });
+  if (pBis) rows = rows.filter(function(a){ return preis(a) != null && preis(a) <= Number(pBis); });
+
+  var sort = el("af-sort").value;
+  function preisSort(a){ var p = preis(a); return p == null ? Infinity : p; }
+  var sorter = {
+    datum:     function(a,b){ return new Date(b.angebotsdatum || 0) - new Date(a.angebotsdatum || 0); },
+    preis_auf: function(a,b){ return preisSort(a) - preisSort(b); },
+    preis_ab:  function(a,b){ var pa = preisSort(a) === Infinity ? -1 : preisSort(a), pb = preisSort(b) === Infinity ? -1 : preisSort(b); return pb - pa; },
+    km_auf:    function(a,b){ return (a.km_stand == null ? Infinity : a.km_stand) - (b.km_stand == null ? Infinity : b.km_stand); },
+    ez_neu:    function(a,b){ return new Date(b.erstzulassung || 0) - new Date(a.erstzulassung || 0); },
+    score:     function(a,b){ return (b.match_score || 0) - (a.match_score || 0); }
+  };
+  rows.sort(sorter[sort] || sorter.datum);
+
+  sichtbareIds = rows.map(function(a){ return a.id; });
+  el("treffer-anzahl").textContent = rows.length + " von " + alleAngebote.length + " Fahrzeugen";
+
   var html = "";
   rows.forEach(function(a){
     var ez = a.erstzulassung ? new Date(a.erstzulassung).toLocaleDateString("de-DE", { month: "2-digit", year: "numeric" }) : "&ndash;";
-    var preis = a.angebotspreis_netto != null ? fmtEur(a.angebotspreis_netto) + ' <span class="muted">netto</span>' : fmtEur(a.angebotspreis_brutto) + ' <span class="muted">brutto</span>';
+    var brutto = a.angebotspreis_brutto;
+    if (brutto == null && a.angebotspreis_netto != null && a.mwst_ausweisbar) brutto = Math.round(a.angebotspreis_netto * 1.19);
+    var preisHtml;
+    if (a.angebotspreis_netto != null) {
+      preisHtml = '<div class="preis">' + fmtEur(a.angebotspreis_netto) + ' <span class="muted">netto</span></div>'
+        + (brutto != null ? '<div class="brutto">' + fmtEur(brutto) + " brutto</div>" : "");
+    } else {
+      preisHtml = '<div class="preis">' + fmtEur(brutto) + '</div><div class="brutto">brutto inkl. MwSt.</div>';
+    }
     var statusCls = a.status === "Match" ? "pill-blue" : (a.status === "Neu" ? "pill-gold" : "pill-off");
     var ampel = a.ampel_bewertung ? " " + esc(a.ampel_bewertung) : "";
-    html += '<div class="card">'
-      + '<div class="angebot-top"><h3>' + esc(a.hersteller) + " " + esc(a.modell || "") + ' <span class="muted" style="font-weight:400">' + esc(a.typ || "") + "</span></h3>"
-      + '<span class="preis">' + preis + "</span></div>"
-      + '<div class="specs"><span>EZ <b>' + ez + "</b></span><span><b>" + fmtNum(a.km_stand) + "</b> km</span>"
-      + (a.motorleistung_ps ? "<span><b>" + a.motorleistung_ps + "</b> PS</span>" : "")
-      + (a.getriebe ? "<span>" + esc(a.getriebe) + "</span>" : "")
-      + '<span class="pill ' + statusCls + '">' + esc(a.status) + (a.match_score ? " " + a.match_score : "") + ampel + "</span></div>"
-      + '<div class="actions">'
+    var checked = selectedIds.has(a.id) ? " checked" : "";
+
+    var chips = '<span class="spec-chip">EZ <b>' + ez + "</b></span>"
+      + '<span class="spec-chip"><b>' + fmtNum(a.km_stand) + "</b> km</span>"
+      + (a.motorleistung_ps ? '<span class="spec-chip"><b>' + a.motorleistung_ps + "</b> PS</span>" : "")
+      + ((a.kraftstoff && a.kraftstoff.length) ? '<span class="spec-chip">' + esc(a.kraftstoff.join("/")) + "</span>" : "")
+      + (a.getriebe ? '<span class="spec-chip">' + esc(a.getriebe) + "</span>" : "")
+      + '<span class="pill ' + statusCls + '">' + esc(a.status) + (a.match_score ? " " + a.match_score : "") + ampel + "</span>";
+
+    html += '<div class="angebot' + (checked ? " sel" : "") + '" id="ang-' + a.id + '">'
+      + '<div class="selbox"><input type="checkbox" onclick="toggleSelect(' + a.id + ',this.checked)"' + checked + "></div>"
+      + '<div class="kopf"><h3>' + esc(a.hersteller) + " " + esc(a.modell || "")
+      + (a.typ ? ' <span class="variante">' + esc(a.typ) + "</span>" : "") + "</h3></div>"
+      + '<div class="rechts">' + preisHtml + "</div>"
+      + '<div class="specrow">' + chips + "</div>"
+      + '<div class="foot">'
+      + '<span class="quelle-info">'
+      + (a.anbieter_name ? "<b>" + esc(a.anbieter_name) + "</b> &middot; " : "")
+      + (a.anbieter_fahrzeug_nr ? "Fzg-Nr. <b>" + esc(a.anbieter_fahrzeug_nr) + "</b> &middot; " : "")
+      + (a.angebotsdatum ? new Date(a.angebotsdatum).toLocaleDateString("de-DE") : "") + "</span>"
       + (a.original_link ? '<a class="btn btn-ghost" href="' + esc(a.original_link) + '" target="_blank" rel="noopener">Zum Inserat &rarr;</a>' : "")
-      + '<span class="muted" style="align-self:center">' + esc(a.quelle_detail || "") + " &middot; " + (a.angebotsdatum ? new Date(a.angebotsdatum).toLocaleDateString("de-DE") : "") + "</span>"
       + "</div></div>";
   });
-  el("angebote-list").innerHTML = html || '<div class="card muted">Keine Angebote fuer diesen Filter.</div>';
+  el("angebote-list").innerHTML = html || '<div class="card muted">Keine Fahrzeuge fuer diesen Filter.</div>';
+  updateSelCount();
+}
+
+// ---------- Mehrfachauswahl + Loeschen ----------
+var selectedIds = new Set();
+var sichtbareIds = [];
+function toggleSelect(id, on){
+  if (on) selectedIds.add(id); else selectedIds.delete(id);
+  var card = el("ang-" + id);
+  if (card) card.className = "angebot" + (on ? " sel" : "");
+  updateSelCount();
+}
+function toggleSelectAll(on){
+  sichtbareIds.forEach(function(id){ if (on) selectedIds.add(id); else selectedIds.delete(id); });
+  renderAngebote();
+}
+function updateSelCount(){
+  var n = selectedIds.size;
+  el("sel-count").innerHTML = n + " ausgew&auml;hlt";
+  var alle = el("sel-all");
+  if (alle) alle.checked = sichtbareIds.length > 0 && sichtbareIds.every(function(id){ return selectedIds.has(id); });
+}
+async function delSelected(){
+  var ids = [...selectedIds];
+  if (!ids.length) { msg("angebote-msg", "Bitte zuerst Fahrzeuge ausw&auml;hlen (H&auml;kchen).", false); return; }
+  if (!confirm(ids.length + " ausgew&auml;hlte(s) Fahrzeug(e) l&ouml;schen?\n\nDie Suchen bleiben erhalten.")) return;
+  var r = await db.from("angebote").delete().in("id", ids).select("id");
+  if (r.error) { msg("angebote-msg", "L&ouml;schen fehlgeschlagen: " + esc(r.error.message), false); return; }
+  var n = (r.data || []).length;
+  selectedIds.clear();
+  msg("angebote-msg", n + " Fahrzeug(e) gel&ouml;scht. Die Suchen bleiben unver&auml;ndert.", true);
+  loadAngebote();
 }
 
 // ---------- Tabs ----------
@@ -390,6 +795,8 @@ function showTab(t){
   el("tab-angebote").className = "tab" + (t === "angebote" ? " active" : "");
   el("pane-wunsch").style.display = t === "wunsch" ? "block" : "none";
   el("pane-angebote").style.display = t === "angebote" ? "block" : "none";
+  // +Neue Suche + Suchen-Filter nur auf dem Suchen-Tab in der Kopf-Box zeigen
+  el("suchen-controls").style.display = t === "wunsch" ? "block" : "none";
 }
 
 init();
